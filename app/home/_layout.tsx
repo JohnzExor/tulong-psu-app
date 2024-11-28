@@ -5,7 +5,7 @@ const HomeLayout = () => {
   return (
     <Tabs>
       <Tabs.Screen
-        name="behavior-score"
+        name="behavior-score/index"
         options={{
           title: "Score",
           tabBarIcon: ({ size, color }) => (
@@ -33,7 +33,7 @@ const HomeLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="handbook"
+        name="handbook/index"
         options={{
           title: "Handbook",
 
@@ -43,7 +43,7 @@ const HomeLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="settings"
+        name="settings/index"
         options={{
           title: "Settings",
           tabBarIcon: ({ size, color }) => (
