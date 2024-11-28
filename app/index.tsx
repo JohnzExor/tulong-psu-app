@@ -11,7 +11,7 @@ export default function Index() {
       }}
     >
       <Text>Edit app/index.tsx to edit this screen.</Text>
-      <Link href={"/home"}>Home</Link>
+      <Link href={"/home/report-options"}>Home</Link>
     </View>
   );
 }

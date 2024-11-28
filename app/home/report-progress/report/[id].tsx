@@ -4,7 +4,7 @@ import { Text, View } from "react-native";
 
 const fetchData = async (id: string) => {
   try {
-    const data = await fetch(`http://localhost:3002/${id}`);
+    const data = await fetch(`http://localhost:3002/api/reports/view/${id}`);
     return data.json();
   } catch (error) {
     console.log(error);
@@ -14,8 +14,8 @@ const fetchData = async (id: string) => {
 const ViewReport = () => {
   const { id } = useLocalSearchParams();
   const { isLoading, isError, data } = useQuery({
-    queryKey: ["view-report"],
-    queryFn: () => fetchData(id as string),
+    queryKey: ["view-report", id as string],
+    queryFn: ({ queryKey }) => fetchData(queryKey[1]),
   });
 
   const report: { reportType: string } = data;

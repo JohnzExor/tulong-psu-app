@@ -2,9 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "expo-router";
 import { ScrollView, Text, View } from "react-native";
 
-const fetchData = async () => {
+const fetchData = async (userId: string) => {
   try {
-    const data = await fetch("http://localhost:3002/");
+    const data = await fetch(
+      `http://localhost:3002/api/reports/user/${userId}`
+    );
     return data.json();
   } catch (error) {
     console.error(error);
@@ -12,9 +14,11 @@ const fetchData = async () => {
 };
 
 const ReportProgress = () => {
+  const userId = "202180030";
+
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["user-reports"],
-    queryFn: fetchData,
+    queryKey: ["user-reports", userId],
+    queryFn: ({ queryKey }) => fetchData(queryKey[1]),
   });
 
   const reports: {
