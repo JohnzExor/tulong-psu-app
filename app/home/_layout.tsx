@@ -5,9 +5,9 @@ const HomeLayout = () => {
   return (
     <Tabs>
       <Tabs.Screen
-        name="profile/index"
+        name="behavior-score/index"
         options={{
-          title: "Profile",
+          title: "Score",
           tabBarIcon: ({ size, color }) => (
             <Ionicons size={size} color={color} name="person-outline" />
           ),
@@ -24,7 +24,7 @@ const HomeLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="report-options"
+        name="index"
         options={{
           title: "Report",
           tabBarIcon: ({ size, color }) => (
