@@ -56,7 +56,7 @@ const ReportProgress = () => {
                   <Text>{description}</Text>
                   <Link
                     href={{
-                      pathname: "/home/report-progress/report/[id]",
+                      pathname: "/home/report-progress/document/[id]",
                       params: { id: id },
                     }}
                   >

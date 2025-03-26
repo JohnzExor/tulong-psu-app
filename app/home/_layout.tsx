@@ -24,7 +24,7 @@ const HomeLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="index"
+        name="report"
         options={{
           title: "Report",
           tabBarIcon: ({ size, color }) => (
