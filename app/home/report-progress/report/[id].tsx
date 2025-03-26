@@ -1,11 +1,13 @@
+import { serverUrl } from "@/app/lib/server";
 import { useQuery } from "@tanstack/react-query";
 import { useLocalSearchParams } from "expo-router";
 import { Text, View } from "react-native";
 
 const fetchData = async (id: string) => {
   try {
-    const data = await fetch(`http://localhost:3002/${id}`);
-    return data.json();
+    const data = await fetch(`${serverUrl}/api/reports/document/${id}`);
+    const res = await data.json();
+    return res.data;
   } catch (error) {
     console.log(error);
   }
@@ -13,12 +15,16 @@ const fetchData = async (id: string) => {
 
 const ViewReport = () => {
   const { id } = useLocalSearchParams();
-  const { isLoading, isError, data } = useQuery({
+  const {
+    isLoading,
+    isError,
+    data: data,
+  } = useQuery({
     queryKey: ["view-report"],
     queryFn: () => fetchData(id as string),
   });
 
-  const report: { reportType: string } = data;
+  const report: { reportType: string; status: string } = data;
 
   return (
     <View>
@@ -31,6 +37,7 @@ const ViewReport = () => {
       ) : (
         <View>
           <Text>{report.reportType}</Text>
+          <Text>{report.status}</Text>
         </View>
       )}
     </View>
