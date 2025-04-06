@@ -1,5 +1,7 @@
 import { Link } from "expo-router";
 import { Text, View } from "react-native";
+import SOSButton from "@/app/components/sosBtn";
+
 
 const Home = () => {
   return (
@@ -9,6 +11,17 @@ const Home = () => {
         <Text>Are you in a emergency?</Text>
         <Text>Press the button below and help will reach you soon.</Text>
       </View>
+      <View className="justify-center items-center">
+        <SOSButton
+          outerSize={300}
+          middleSize={250}
+          innerSize={200}
+          innermostSize={150}
+          text="SOS"
+          onPress={() => console.log("SOS Button Pressed")}
+        />
+      </View>
+      
       <Link href={{ pathname: "/home/report/campus-maintenance" }}>
         <Text>Campus Maintenance Request</Text>
         <Text>
