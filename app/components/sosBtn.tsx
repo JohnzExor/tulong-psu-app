@@ -1,90 +1,42 @@
-import React, { useEffect, useRef } from "react";
-import { View, TouchableOpacity, Animated, Text } from "react-native";
-import { usePulseAnimation } from "./pulseAnim";
+import { View, TouchableOpacity, Text } from "react-native";
 
 interface SOSButtonProps {
-  outerSize: number;
-  middleSize: number;
-  innerSize: number;
-  innermostSize: number;
   text?: string;
   onPress?: () => void;
 }
 
 export default function SOSButton({
-  outerSize,
-  middleSize,
-  innerSize,
-  innermostSize,
   text,
   onPress,
 }: SOSButtonProps) {
-  const pulseAnim = usePulseAnimation();
 
   return (
+    <View className="flex flex-col items-center justify-center h-[20em]">
       <TouchableOpacity
         onPress={onPress}
-        className="justify-center items-center"
-        style={{
-          width: outerSize,
-          height: outerSize,
-        }}
+        className="flex flex-col justify-center items-center relative"
       >
-        {/* Outer Layer */}
-        <Animated.View
-          className="bg-red-50 absolute justify-center items-center shadow-xl"
-          style={{
-            width: outerSize,
-            height: outerSize,
-            borderRadius: outerSize / 2,
-            opacity: pulseAnim, 
-          }}
-        >
-          {/* Middle Layer */}
-          <Animated.View
-            className="bg-red-100 justify-center items-center shadow-xl"
-            style={{
-              width: middleSize,
-              height: middleSize,
-              borderRadius: middleSize / 2,
-              opacity: pulseAnim,
-            }}
-          >
-            {/* Inner Layer */}
-            <Animated.View
-              className="bg-red-300 justify-center items-center shadow-xl"
-              style={{
-                width: innerSize,
-                height: innerSize,
-                borderRadius: innerSize / 2,
-                opacity: pulseAnim,
-              }}
-            />
-          </Animated.View>
-        </Animated.View>
-
-        {/* Innermost Layer */}
         <View
-          className="bg-red-300 absolute justify-center items-center shadow-black"
-          style={{
-              width: innermostSize,
-              height: innermostSize,
-              borderRadius: innermostSize / 2,
-            }}
+          className=" absolute rounded-full bg-red-50 dark:bg-red-300 h-[18em] w-[18em] animate-pulse shadow-xl"
+        />
+        <View
+          className=" absolute rounded-full bg-red-100 dark:bg-red-400 h-[15em] w-[15em] animate-pulse shadow-xl"
+        />
+        <View
+          className=" absolute rounded-full bg-red-300 dark:bg-red-500 h-[12em] w-[12em] animate-pulse shadow-xl"
+        />
+        <View
+          className="flex flex-col justify-center items-center rounded-full bg-red-500 dark:bg-red-700 disabled:bg-red-300  text-white h-[10em] w-[10em] z-20 shadow-xl"
         >
           {text ? (
-            <Text
-              style={{
-                fontSize: innermostSize / 4,
-                color: "white",
-                textAlign: "center",
-              }}
+            <Text className="text-5xl font-bold"
             >
               {text}
             </Text>
           ): null}
         </View>
       </TouchableOpacity>
-      
+    </View>
+    
   );
 }

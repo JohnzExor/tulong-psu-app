@@ -1,14 +1,10 @@
 import { Link } from "expo-router";
 import { Text, View, ScrollView } from "react-native";
 import SOSButton from "@/app/components/sosBtn";
-import { usePulseAnimation } from "@/app/components/pulseAnim";
-import { Animated } from "react-native";  
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 
 
 const Home = () => {
-
-  const pulseAnim = usePulseAnimation();
 
   return (
     <SafeAreaProvider>
@@ -23,16 +19,12 @@ const Home = () => {
               <View className="bg-background p-4 rounded-xl space-y-2 border border-primary">
                 <Text className="font-bold text-primary">Your current location</Text>
                 <View className="gap-1 text-sm text-primary">
-                  <Animated.Text style={{ opacity: pulseAnim }}>Getting your current location</Animated.Text>
+                  <Text className="animate-pulse">Getting your current location</Text>
                 </View>
               </View>
             </View>
             <View className="justify-center items-center">
               <SOSButton
-                outerSize={300}
-                middleSize={250}
-                innerSize={200}
-                innermostSize={170}
                 text="SOS"
                 onPress={() => console.log("SOS Button Pressed")}
               />
@@ -69,7 +61,6 @@ const Home = () => {
         </ScrollView>
       </SafeAreaView>
     </SafeAreaProvider>
-    
   );
 };
 
