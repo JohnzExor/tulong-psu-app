@@ -17,16 +17,16 @@ export default function SOSButton({
         className="flex flex-col justify-center items-center relative"
       >
         <View
-          className=" absolute rounded-full bg-red-50 dark:bg-red-300 h-[18em] w-[18em] animate-pulse shadow-xl"
+          className=" absolute rounded-full bg-red-50 dark:bg-red-300 h-[18em] w-[18em] animate-pulse"
         />
         <View
-          className=" absolute rounded-full bg-red-100 dark:bg-red-400 h-[15em] w-[15em] animate-pulse shadow-xl"
+          className=" absolute rounded-full bg-red-100 dark:bg-red-400 h-[15em] w-[15em] animate-pulse"
         />
         <View
-          className=" absolute rounded-full bg-red-300 dark:bg-red-500 h-[12em] w-[12em] animate-pulse shadow-xl"
+          className=" absolute rounded-full bg-red-300 dark:bg-red-500 h-[12em] w-[12em] animate-pulse"
         />
         <View
-          className="flex flex-col justify-center items-center rounded-full bg-red-500 dark:bg-red-700 disabled:bg-red-300  text-white h-[10em] w-[10em] z-20 shadow-xl"
+          className="flex flex-col justify-center items-center rounded-full bg-red-500 dark:bg-red-700 disabled:bg-red-300  text-white h-[10em] w-[10em] z-20"
         >
           {text ? (
             <Text className="text-5xl font-bold"

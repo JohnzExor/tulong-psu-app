@@ -7,7 +7,8 @@ const HomeLayout = () => {
       <Tabs.Screen
         name="behavior-score/index"
         options={{
-          title: "Score",
+          headerShown: false, // Remove header
+          tabBarLabel: "Behavior Score", // Custom tab name
           tabBarIcon: ({ size, color }) => (
             <Ionicons size={size} color={color} name="person-outline" />
           ),
@@ -16,8 +17,8 @@ const HomeLayout = () => {
       <Tabs.Screen
         name="report-progress"
         options={{
-          title: "Progress",
-
+          headerShown: false, // Remove header
+          tabBarLabel: "Report Progress", // Custom tab name
           tabBarIcon: ({ size, color }) => (
             <Ionicons size={size} color={color} name="analytics-outline" />
           ),
@@ -26,7 +27,8 @@ const HomeLayout = () => {
       <Tabs.Screen
         name="report"
         options={{
-          title: "Report",
+          headerShown: false, // Remove header
+          tabBarLabel: "Home", // Custom tab name
           tabBarIcon: ({ size, color }) => (
             <Ionicons size={size} color={color} name="home-outline" />
           ),
@@ -35,8 +37,8 @@ const HomeLayout = () => {
       <Tabs.Screen
         name="handbook/index"
         options={{
-          title: "Handbook",
-
+          headerShown: false, // Remove header
+          tabBarLabel: "Handbook", // Custom tab name
           tabBarIcon: ({ size, color }) => (
             <Ionicons size={size} color={color} name="book-outline" />
           ),
@@ -45,7 +47,8 @@ const HomeLayout = () => {
       <Tabs.Screen
         name="settings/index"
         options={{
-          title: "Settings",
+          headerShown: false, // Remove header
+          tabBarLabel: "Settings", // Custom tab name
           tabBarIcon: ({ size, color }) => (
             <Ionicons size={size} color={color} name="settings-outline" />
           ),
