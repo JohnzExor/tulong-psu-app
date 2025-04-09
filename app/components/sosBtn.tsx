@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import { View, TouchableOpacity, Animated, Text, StyleSheet } from "react-native";
+import { View, TouchableOpacity, Animated, Text } from "react-native";
+import { usePulseAnimation } from "./pulseAnim";
 
 interface SOSButtonProps {
   outerSize: number;
@@ -18,24 +19,7 @@ export default function SOSButton({
   text,
   onPress,
 }: SOSButtonProps) {
-  const pulseAnim = useRef(new Animated.Value(1)).current;
-
-  useEffect(() => {
-    Animated.loop(
-      Animated.sequence([
-        Animated.timing(pulseAnim, {
-          toValue: 0.5, // Reduce opacity to 50%
-          duration: 1000,
-          useNativeDriver: true,
-        }),
-        Animated.timing(pulseAnim, {
-          toValue: 1, // Restore opacity to 100%
-          duration: 1000,
-          useNativeDriver: true,
-        }),
-      ])
-    ).start();
-  }, [pulseAnim]);
+  const pulseAnim = usePulseAnimation();
 
   return (
       <TouchableOpacity
@@ -48,48 +32,50 @@ export default function SOSButton({
       >
         {/* Outer Layer */}
         <Animated.View
-          className="bg-red-50 absolute justify-center items-center"
+          className="bg-red-50 absolute justify-center items-center shadow-xl"
           style={{
             width: outerSize,
             height: outerSize,
-            borderRadius: outerSize / 2, // Ensures a perfect circle
-            opacity: pulseAnim, // Bind the animation to opacity
+            borderRadius: outerSize / 2,
+            opacity: pulseAnim, 
           }}
         >
           {/* Middle Layer */}
-          <View
-            className="bg-red-100 justify-center items-center"
+          <Animated.View
+            className="bg-red-100 justify-center items-center shadow-xl"
             style={{
               width: middleSize,
               height: middleSize,
-              borderRadius: middleSize / 2, // Ensures a perfect circle
+              borderRadius: middleSize / 2,
+              opacity: pulseAnim,
             }}
           >
             {/* Inner Layer */}
-            <View
-              className="bg-red-300 justify-center items-center"
+            <Animated.View
+              className="bg-red-300 justify-center items-center shadow-xl"
               style={{
                 width: innerSize,
                 height: innerSize,
-                borderRadius: innerSize / 2, // Ensures a perfect circle
+                borderRadius: innerSize / 2,
+                opacity: pulseAnim,
               }}
             />
-          </View>
+          </Animated.View>
         </Animated.View>
 
         {/* Innermost Layer */}
         <View
-          className="bg-red-500 absolute justify-center items-center"
+          className="bg-red-300 absolute justify-center items-center shadow-black"
           style={{
               width: innermostSize,
               height: innermostSize,
               borderRadius: innermostSize / 2,
-            }} // Ensures a perfect circle
+            }}
         >
           {text ? (
             <Text
               style={{
-                fontSize: innermostSize / 4, // Dynamically adjust text size
+                fontSize: innermostSize / 4,
                 color: "white",
                 textAlign: "center",
               }}
@@ -99,5 +85,6 @@ export default function SOSButton({
           ): null}
         </View>
       </TouchableOpacity>
+      
   );
 }
